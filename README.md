@@ -1,6 +1,6 @@
-# JHIC — Ekosistem Digital Terintegrasi SMKN 9 Semarang
+# MySkanilan — Ekosistem Digital Terintegrasi SMKN 9 Semarang
 
-> **Lomba Website Sekolah** · Laravel 13 API + React Frontend · Monorepo
+> **Dikembangkan untuk Lomba JHIC** · Laravel 13 API + React Frontend · Monorepo
 
 [![Laravel](https://img.shields.io/badge/Laravel-13-FF2D20?logo=laravel)](https://laravel.com)
 [![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)](https://react.dev)
@@ -29,7 +29,7 @@
 
 ## 1. Gambaran Umum
 
-**JHIC** (*Jurusan-Hub Integrated Commerce*) adalah portal identitas digital SMKN 9 Semarang yang menyatukan **7 platform** ke dalam satu ekosistem terintegrasi. Bukan sekadar website profil sekolah — melainkan tulang punggung ekonomi & kepedulian sosial warga sekolah yang benar-benar berjalan.
+**MySkanilan** adalah portal identitas digital SMKN 9 Semarang yang menyatukan **7 platform** ke dalam satu ekosistem terintegrasi. Bukan sekadar website profil sekolah — melainkan tulang punggung ekonomi & kepedulian sosial warga sekolah yang benar-benar berjalan.
 
 ```
 Satu login → Tujuh platform → Satu ekosistem ekonomi sirkular
@@ -147,7 +147,7 @@ Satu login → Tujuh platform → Satu ekosistem ekonomi sirkular
 ## 4. Struktur Monorepo
 
 ```
-jhic-smkn9smg/
+myskanilan/
 ├── README.md
 ├── .gitignore
 │
@@ -939,7 +939,7 @@ npm run dev
 ### Backend `.env`
 
 ```env
-APP_NAME="JHIC SMKN9"
+APP_NAME="MySkanilan"
 APP_ENV=local
 APP_URL=http://localhost:8000
 
@@ -1008,4 +1008,4 @@ VITE_THALASSEMIA_URL=https://thalassemiago.my.id
 
 ## Lisensi
 
-MIT © 2026 SMKN 9 Semarang — Dikembangkan untuk Lomba Website Sekolah
+MIT © 2026 SMKN 9 Semarang — MySkanilan · Dikembangkan untuk Lomba JHIC
