@@ -1,0 +1,32 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# Laravel
+backend/.env
+backend/vendor/
+backend/node_modules/
+backend/storage/app/public/
+backend/storage/logs/*.log
+backend/bootstrap/cache/*.php
+backend/.phpunit.cache/
+
+# React / Node
+frontend/.env.local
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/settings.json
+*.swp
+*.swo
+
+# Misc
+*.log
+*.cache
