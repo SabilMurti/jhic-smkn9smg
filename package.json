@@ -1,0 +1,32 @@
+{
+  "name": "myskanilan-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MySkanilan Ecosystem SMKN 9 Semarang Monorepo",
+  "scripts": {
+    "setup": "npm run install:all && npm run setup:env && npm run seed",
+    "install:all": "npm --prefix packages/myskanilan-sdk install && npm --prefix packages/myskanilan-sdk run build && npm --prefix backend install && npm --prefix apps/merchant-pos install && npm --prefix apps/portal-web install",
+    "build:sdk": "npm --prefix packages/myskanilan-sdk run build",
+    "build:backend": "npm --prefix backend run build",
+    "build:pos": "npm --prefix apps/merchant-pos run build",
+    "build:portal": "npm --prefix apps/portal-web run build",
+    "build:all": "npm run build:sdk && npm run build:backend && npm run build:pos && npm run build:portal",
+    "setup:env": "node -e \"const fs=require('fs'); if (!fs.existsSync('backend/.env') && fs.existsSync('backend/.env.example')) { fs.copyFileSync('backend/.env.example', 'backend/.env'); console.log('Created backend/.env from .env.example'); }\"",
+    "seed": "npm --prefix backend run seed",
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:pos": "npm --prefix apps/merchant-pos run dev",
+    "dev:portal": "npm --prefix apps/portal-web run dev",
+    "test:e2e": "node test_e2e.mjs"
+  },
+  "keywords": [
+    "myskanilan",
+    "smkn9",
+    "rfid",
+    "qris",
+    "cashless",
+    "education",
+    "closed-loop"
+  ],
+  "author": "SMKN 9 Semarang",
+  "license": "MIT"
+}

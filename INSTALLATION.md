@@ -35,10 +35,10 @@ jhic-smkn9smg/
 
 Pastikan lingkungan komputer Anda telah terinstal:
 
-1. **Operating System**:
-   - **Linux** (Ubuntu 22.04 LTS / 24.04 LTS direkomendasikan)
-   - **Windows 10/11** menggunakan **WSL2 (Windows Subsystem for Linux - Ubuntu)**
-   - **macOS** (Apple Silicon / Intel)
+1. **Operating System (100% Cross-Platform)**:
+   - **Windows 10 / 11** (Native via Command Prompt, PowerShell, atau WSL2)
+   - **Linux** (Ubuntu 22.04 LTS / 24.04 LTS, Debian, Arch, Fedora)
+   - **macOS** (Apple Silicon M1/M2/M3/M4 atau Intel)
 2. **Node.js**:
    - Versi LTS: **`v20.x`**, **`v22.x`**, atau **`v24.x`** (Pengujian berhasil pada `v24.18.0`).
    - Cek versi: `node -v`
@@ -54,10 +54,24 @@ Pastikan lingkungan komputer Anda telah terinstal:
 
 ## 3. 🗄️ Setup Database MongoDB
 
-Anda dapat memilih salah satu cara berikut:
+Anda dapat memilih salah satu cara instalasi sesuai sistem operasi Anda:
 
-### Opsi A: Native MongoDB di Linux / WSL2 Ubuntu (Direkomendasikan)
-Jika Anda menggunakan WSL2 / Ubuntu native:
+### Opsi A: Native Windows (MSI Installer / Winget)
+Untuk pengguna Windows native (CMD atau PowerShell):
+
+```powershell
+# 1. Install MongoDB Server otomatis via Windows Package Manager (Winget):
+winget install MongoDB.Server
+
+# 2. (Opsional) Install MongoDB Compass untuk melihat visual data tabel:
+winget install MongoDB.Compass
+```
+*Catatan: Installer Windows otomatis mendaftarkan MongoDB sebagai Windows Service di latar belakang (dapat dicek di `services.msc` -> `MongoDB Server`), sehingga database langsung aktif di `mongodb://127.0.0.1:27017` tanpa perlu terminal khusus.*
+
+---
+
+### Opsi B: Native MongoDB di Linux / WSL2 Ubuntu
+Jika Anda menggunakan WSL2 atau Ubuntu native:
 
 ```bash
 # 1. Install dependencies & kunci GPG MongoDB
@@ -85,8 +99,10 @@ mongosh --eval "db.adminCommand('ping')"
 # Harus menghasilkan: { ok: 1 }
 ```
 
-### Opsi B: Menggunakan Docker (Alternatif Ringan)
-Jika Anda lebih terbiasa dengan Docker:
+---
+
+### Opsi C: Menggunakan Docker (Multi-Platform: Windows, Mac, Linux)
+Jika di komputer Anda sudah terinstal Docker Desktop:
 
 ```bash
 docker run -d \
@@ -98,11 +114,46 @@ docker run -d \
 
 ---
 
-## 4. 📦 Langkah Instalasi & Build Monorepo
+## 4. ⚡ Panduan Cepat Khusus Pengguna Windows (1-Click Setup & Run)
+
+Bagi tim yang menggunakan **Windows (CMD / File Explorer)**, kami telah menyediakan skrip otomatis:
+
+### 1. Setup & Install Sekaligus (Hanya dijalankan sekali di awal)
+Cukup klik ganda (double-click) file:
+👉 **`install-windows.bat`**
+
+Atau jalankan dari Command Prompt / PowerShell di root proyek:
+```cmd
+.\install-windows.bat
+```
+Skrip ini akan otomatis menginstal package SDK, mem-build SDK, menginstal backend, menyalin `.env`, menginstal aplikasi web, dan melakukan seeding database demo.
+
+### 2. Menjalankan Semua Layanan Sekaligus
+Cukup klik ganda (double-click) file:
+👉 **`start-windows.bat`**
+
+*(Atau jika menggunakan PowerShell: `powershell -ExecutionPolicy Bypass -File .\start-windows.ps1`)*
+
+Skrip ini akan otomatis:
+1. Membuka 3 jendela Command Prompt terpisah untuk **Backend (4000)**, **Web Kantin (5173)**, dan **Portal Web (3000)**.
+2. Membuka browser secara otomatis ke `http://localhost:3000`.
+
+---
+
+## 5. 📦 Langkah Manual Instalasi & Build (Cross-Platform)
+
+Jika Anda ingin menjalankan instalasi secara manual langkah demi langkah (berlaku di Windows, Linux, dan macOS):
 
 > [!IMPORTANT]
 > **Urutan Instalasi Wajib Diperhatikan!**  
 > Karena `merchant-pos` dan `portal-web` menggunakan `@myskanilan/sdk` dari direktori lokal (`file:../../packages/myskanilan-sdk`), Anda **WAJIB melakukan build pada SDK terlebih dahulu** sebelum menjalankan aplikasi lain.
+
+### Cara Ringkas (Via Root NPM Scripts):
+Di root folder proyek, jalankan:
+```bash
+# Otomatis install semua dependensi, build SDK, buat .env, dan seed database
+npm run setup
+```
 
 ### Langkah 1: Clone Repository
 ```bash
@@ -273,10 +324,3 @@ Data berikut telah terisi secara default melalui perintah `npm run seed`:
 - **Penyebab**: Browser membatasi akses webcam (`getUserMedia`) jika tidak diakses melalui protokol aman (`https://` atau `localhost`).
 - **Solusi**: Pastikan Anda membuka melalui `http://localhost:3000` (bukan menggunakan IP lokal seperti `http://192.168.x.x` tanpa sertifikat SSL) dan berikan izin (*Allow*) akses kamera ketika browser meminta konfirmasi.
 
----
-
-## 10. 📞 Kontak & Kontribusi
-
-Jika Anda menemukan kendala teknis atau ingin menambahkan modul baru (misal: integrasi absensi RFID gerbang atau integrasi perpustakaan):
-- **Tim Pengembang**: Tim IT & Rekayasa Perangkat Lunak (PPLG) SMKN 9 Semarang
-- **Lisensi**: MIT License — Terbuka untuk seluruh ekosistem sekolah Jawa Tengah.
