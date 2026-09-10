@@ -1,0 +1,25 @@
+{
+  "name": "@myskanilan/sdk",
+  "version": "1.0.0",
+  "description": "Universal Middleware Client SDK for MySkanilan School Ecosystem",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc -w"
+  },
+  "keywords": ["myskanilan", "sdk", "rfid", "qris", "cashless", "education"],
+  "author": "SMKN 9 Semarang",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.5.4"
+  }
+}

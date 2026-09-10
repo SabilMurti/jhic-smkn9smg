@@ -1,32 +1,37 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
+# Dependencies
+node_modules/
+**/node_modules/
 
-# Laravel
+# Build outputs
+dist/
+**/dist/
+.vite/
+**/.vite/
+
+# Environment files
+.env
+.env.local
+.env.*.local
 backend/.env
-backend/vendor/
-backend/node_modules/
-backend/storage/app/public/
-backend/storage/logs/*.log
-backend/bootstrap/cache/*.php
-backend/.phpunit.cache/
 
-# React / Node
-frontend/.env.local
-frontend/node_modules/
-frontend/dist/
-frontend/.vite/
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # OS
 .DS_Store
 Thumbs.db
 
-# IDE
+# IDE & Editor
 .idea/
-.vscode/settings.json
+.vscode/
 *.swp
 *.swo
 
-# Misc
-*.log
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+.cache/
 *.cache
